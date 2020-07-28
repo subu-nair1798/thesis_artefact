@@ -60,6 +60,6 @@ contract Insurance {
 }
 
 
-0xca35b7d915458ef540ade6068dfe2f44e8fa733c, 0x4b0897b0513fdc7c541b6d9d7e929c4e5364d2db, 1, 1, "abc", 1, 1, 1, "male", "honda", 2004 
+0xca35b7d915458ef540ade6068dfe2f44e8fa733c, 0x4b0897b0513fdc7c541b6d9d7e929c4e5364d2db, 1, 1, "abc", 1, 999999, 1, "male", "honda", 2004 
 
-10, 10, 10, "fatal", "f", "f", "p", 10, 2, true, 2, 3, false
+999999, 999999, 999999, "fatal", "f", "f", "p", 10, 2, true, 2, 3, false

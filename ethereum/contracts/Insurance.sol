@@ -58,7 +58,7 @@ contract Insurance {
     uint public auto_year;
 
     modifier restricted() {
-        require(msg.sender == insurer, "Only the insurer can create a claim");
+        require(msg.sender == insurer, "Only the insurer can access this function");
         _;
     }
 
@@ -119,10 +119,14 @@ contract Insurance {
         claimDetailsArray.push(newClaimsDetails);
     }
 
-    function approveClaim(uint index) public restricted {
+    function approveClaim(uint index) public payable restricted {
         Claim storage claim = claimsArray[index];
 
+        require(!claim.complete, "Claim already processed");
+
         uint total_claim_amount = claim.injury_claim + claim.property_claim + claim.vehicle_claim;
+
+        require(msg.value == total_claim_amount, "Error! Invalid claim amount");
 
         customerAddress.transfer(total_claim_amount);
         claim.complete = true;
@@ -131,6 +135,8 @@ contract Insurance {
 
     function denyClaim(uint index) public restricted {
         Claim storage claim = claimsArray[index];
+
+        require(!claim.complete, "Claim already processed");
 
         claim.complete = true;
         claim.claim_decision = false;
