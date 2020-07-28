@@ -5,12 +5,12 @@ pragma solidity >=0.5.0 <0.7.0;
 contract InsuranceFactory {
     address[] public deployedInsurance;
 
-    function createInsurance(address payable customerAddress, uint month_as_customerArg,
+    function createInsurance(address payable customer_address, uint months_as_customerArg,
                             uint ageArg, string memory policy_cslArg, uint policy_deductableArg,
                             uint annual_premiumArg, uint umbrella_limitArg, string memory sexArg,
                             string memory auto_makeArg, uint auto_yearArg) public {
 
-        address newInsurance = address(new Insurance(msg.sender, customerAddress, month_as_customerArg,
+        address newInsurance = address(new Insurance(msg.sender, customer_address, months_as_customerArg,
                                         ageArg, policy_cslArg, policy_deductableArg, annual_premiumArg,
                                         umbrella_limitArg, sexArg, auto_makeArg, auto_yearArg));
 
@@ -46,8 +46,8 @@ contract Insurance {
     Claim[] public claimsArray;
     ClaimDetails[] public claimDetailsArray;
     address payable public insurer;
-    address payable public customerAddress;
-    uint public month_as_customer;
+    address payable public customer_address;
+    uint public months_as_customer;
     uint public age;
     string public policy_csl;
     uint public policy_deductable;
@@ -63,13 +63,13 @@ contract Insurance {
     }
 
     constructor(address payable insurerArg, address payable customerAddressArg,
-                uint month_as_customerArg, uint ageArg, string memory policy_cslArg,
+                uint months_as_customerArg, uint ageArg, string memory policy_cslArg,
                 uint policy_deductableArg, uint annual_premiumArg, uint umbrella_limitArg,
                 string memory sexArg, string memory auto_makeArg, uint auto_yearArg) public {
 
         insurer = insurerArg;
-        customerAddress = customerAddressArg;
-        month_as_customer = month_as_customerArg;
+        customer_address = customerAddressArg;
+        months_as_customer = months_as_customerArg;
         age = ageArg;
         policy_csl = policy_cslArg;
         policy_deductable = policy_deductableArg;
@@ -81,7 +81,7 @@ contract Insurance {
     }
 
     function payPremium() public payable {
-        require(msg.sender == customerAddress, "Only insured customers can pay the premium");
+        require(msg.sender == customer_address, "Only insured customers can pay the premium");
         require(msg.value == annual_premium, "Please pay the correct premium amount");
         insurer.transfer(msg.value);
     }
@@ -91,7 +91,7 @@ contract Insurance {
                         string memory authorities_contacted, uint incident_hour, uint number_of_vehicles_involved,
                         bool property_damage, uint bodily_injuries, uint witnesses, bool police_report_available) public {
 
-        require(msg.sender == customerAddress, "Only insured customers can apply for a claim");
+        require(msg.sender == customer_address, "Only insured customers can apply for a claim");
 
         Claim memory newClaim = Claim({
             injury_claim: injury_claim,
@@ -128,7 +128,7 @@ contract Insurance {
 
         require(msg.value == total_claim_amount, "Error! Invalid claim amount");
 
-        customerAddress.transfer(total_claim_amount);
+        customer_address.transfer(total_claim_amount);
         claim.complete = true;
         claim.claim_decision = true;
     }
@@ -144,8 +144,8 @@ contract Insurance {
 
     function getSummary() public view returns(address, uint, uint, string memory, uint, uint, uint, string memory, string memory, uint) {
         return(
-            customerAddress,
-            month_as_customer,
+            customer_address,
+            months_as_customer,
             age,
             policy_csl,
             policy_deductable,

@@ -9,17 +9,18 @@ const provider = new HDWalletProvider(
     "https://rinkeby.infura.io/v3/d1d22a6bf235434cbd9cef0031eae3bd"
 )
 
-const web3 = new Web3(provider)
+const web3 = new Web3(provider);
+
 const deploy = async () => {
-    const accounts = await web3.eth.getAccounts()
-    console.log("Attempting to deploy from the account: ", accounts[0])
+    const accounts = await web3.eth.getAccounts();
+    console.log("Attempting to deploy from the account: ", accounts[0]);
 
     const result = await new web3.eth.Contract(abiFactory)
         .deploy({ data: "0x" + bytecodeFactory})
-        .send({ from: accounts[0] })
+        .send({ from: accounts[0] });
     
-    console.log(abiFactory)
-    console.log("Contract deployed at: ", result.options.address)
+    console.log(abiFactory);
+    console.log("Contract deployed at: ", result.options.address);
 }
 
-deploy()
+deploy();

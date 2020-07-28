@@ -24,7 +24,7 @@ const input = {
     }
 };
 
-const ouput = JSON.parse(solc.compile(JSON.stringify(input))).contracts["Insurance.sol"];
+const output = JSON.parse(solc.compile(JSON.stringify(input))).contracts["Insurance.sol"];
 
 fs.ensureDirSync(buildPath);
 
