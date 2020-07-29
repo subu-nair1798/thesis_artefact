@@ -10,17 +10,6 @@ class PayPremiumForm extends Component {
         loadingFlag: false
     }
 
-    // renderAnnualPremium = async () => {
-    //     const insurance = Insurance(this.props.address);
-    //     const annualPremium = await insurance.methods.annual_premium().call();
-
-    //     return <Input 
-    //                 disabled 
-    //                 placeholder={(parseFloat(annualPremium)/1000).toString()}
-    //                 label="USD"
-    //                 labelPosition="right" />;
-    // }
-
     onSubmit = async (event) => {
         event.preventDefault();
 
