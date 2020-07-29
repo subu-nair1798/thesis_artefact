@@ -82,7 +82,6 @@ contract Insurance {
 
     function payPremium() public payable {
         require(msg.sender == customer_address, "Only insured customers can pay the premium");
-        require(msg.value == annual_premium, "Please pay the correct premium amount");
         insurer.transfer(msg.value);
     }
 
@@ -125,8 +124,6 @@ contract Insurance {
         require(!claim.complete, "Claim already processed");
 
         uint total_claim_amount = claim.injury_claim + claim.property_claim + claim.vehicle_claim;
-
-        require(msg.value == total_claim_amount, "Error! Invalid claim amount");
 
         customer_address.transfer(total_claim_amount);
         claim.complete = true;

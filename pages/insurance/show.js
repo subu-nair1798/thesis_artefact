@@ -3,7 +3,7 @@ import Layout from "../../components/Layout";
 import Insurance from "../../ethereum/insurance";
 import { Card, Grid, Button, GridColumn } from "semantic-ui-react";
 import web3 from "../../ethereum/web3";
-// import PayPremiumForm from "../../components/PayPremiumForm";
+import PayPremiumForm from "../../components/PayPremiumForm";
 import { Link } from "../../routes";
 
 class InsuranceShow extends Component {
@@ -97,7 +97,9 @@ class InsuranceShow extends Component {
                         <Grid.Column width={10}>
                             {this.renderSummaryCards()}
                         </Grid.Column>
-                        <Grid.Column width={6}></Grid.Column>
+                        <Grid.Column width={6}>
+                            <PayPremiumForm address={this.props.address} annualPremium={this.props.annualPremium} />
+                        </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column>
