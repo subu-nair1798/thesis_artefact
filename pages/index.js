@@ -16,8 +16,8 @@ class InsuranceIndex extends Component {
             return {
                 header: address,
                 description: (
-                    <Link route={`/campaign/${address}`}>
-                        <a>View Campaign</a>
+                    <Link route={`/insurance/${address}`}>
+                        <a>View Insurance Contract</a>
                     </Link>
                 ),
                 fluid: true

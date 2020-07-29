@@ -1,7 +1,7 @@
 import web3 from "./web3";
 import InsuranceFactory from "./build/InsuranceFactory.json"
 
-const contractAddress = "0x40b843d2B5C71bD4769774384957f6E9437dFd6F"
+const contractAddress = "0x6Cb2E4e829F67f8aE62faee5F4ceeE82D0082bae"
 
 const instance = new web3.eth.Contract(
     InsuranceFactory.abi,
