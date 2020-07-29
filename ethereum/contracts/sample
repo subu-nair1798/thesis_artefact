@@ -1,64 +1,3 @@
-// SPDX-License-Identifier: UNLICENSED
-
-pragma solidity >=0.5.0 <0.7.0;
-
-contract Insurance {
-    struct Claim {
-        string incident_type;
-        string collision_type;
-        string incident_severity;
-        string authorities_contacted;
-        uint incident_hour;
-        uint number_of_vehicles_involved;
-        string property_damage;
-        uint bodily_injuries;
-        uint witnesses;
-        string police_report_available;
-        uint injury_claim;
-        uint property_claim;
-        uint vehicle_claim;
-        bool complete;
-        bool claim_decision;
-    }
-    
-    struct Customer {
-        uint month_as_customer;
-        uint age;
-        string policy_csl;
-        uint policy_deductable;
-        uint annual_premium;
-        uint umbrella_limit;
-        string sex;
-        uint capital_gain;
-        uint capital_loss;
-    }
-    
-    Claim[] public claims;
-    address public insurer;
-    mapping(address => Customer) public customerStruct;
-    
-    
-    modifier restricted() {
-        require(msg.sender == insurer, "Only the insurer can create a claim");
-        _;
-    }
-    
-    constructor(address insurerArg, address customerAddress, uint month_as_customerArg, uint ageArg, string memory policy_cslArg, uint policy_deductableArg, uint annual_premiumArg, uint umbrella_limitArg, string memory sexArg, uint capital_gainArg, uint capital_lossArg) public {
-        insurer = insurerArg;
-        Customer storage customer = customerStruct[customerAddress];
-        
-        customer.month_as_customer = month_as_customerArg;
-        customer.age = ageArg;
-        customer.policy_csl = policy_cslArg;
-        customer.policy_deductable = policy_deductableArg;
-        customer.annual_premium = annual_premiumArg;
-        customer.umbrella_limit = umbrella_limitArg;
-        customer.sex = sexArg;
-        customer.capital_gain = capital_gainArg;
-        customer.capital_loss = capital_lossArg;
-    }
-}
-
 
 0xca35b7d915458ef540ade6068dfe2f44e8fa733c, 0x4b0897b0513fdc7c541b6d9d7e929c4e5364d2db, 1, 1, "abc", 1, 999999, 1, "male", "honda", 2004 
 
@@ -67,3 +6,11 @@ contract Insurance {
 
 
 deployed node address: 0x40b843d2B5C71bD4769774384957f6E9437dFd6F
+
+a/c 1: 0x2726D5d99403EeDF20A9E903e63a4F6D083281F8
+a/c 2: 0xd646d08dA5144855ea9Cc1E79e61020881ee494d
+
+row 59: 0xd646d08dA5144855ea9Cc1E79e61020881ee494d, 94, 32, "500/1000", 3100000000000000000, 4390000000000000000, 0, "FEMALE", "Chevrolet", 2014  
+
+0x64D8C9ce1Aa40D7A24C7Db1d3fc24D08549eD5cC
+
