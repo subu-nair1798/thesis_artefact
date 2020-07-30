@@ -6,7 +6,7 @@ import Insurance from "../../../ethereum/insurance";
 import ClaimRow from "../../../components/ClaimRow";
 
 class ClaimIndex extends Component {
-    static async getIntialProps(props) {
+    static async getInitialProps(props) {
         const { address } = props.query;
         const insurance = Insurance(address);
         const claimsCount = await insurance.methods.getClaimsCount().call();
@@ -46,7 +46,7 @@ class ClaimIndex extends Component {
                         <Button primary>New Claim</Button>
                     </a>
                 </Link>
-                <Link route={`/insurance/${this.props.address}/`}>
+                <Link route={`/insurance/${this.props.address}`}>
                     <a>
                         <Button secondary>Back</Button>
                     </a>
@@ -63,7 +63,7 @@ class ClaimIndex extends Component {
                         </Row>
                     </Header>
                     <Body>
-                        {/* {this.renderRows()} */}
+                        {this.renderRows()}
                     </Body>
                 </Table>
                 <h5>Found {this.props.claimsCount} claims!</h5>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Table, Button } from "semantic-ui-react";
+import { Link } from "../routes";
 
 class ClaimRow extends Component {
     render() {
@@ -16,7 +17,7 @@ class ClaimRow extends Component {
                 <Cell>
                     <Link route={`/insurance/${address}/claims/${id}/claimAnalysis`}>
                         <a>
-                            <Button >View</Button>
+                            <Button>View</Button>
                         </a>
                     </Link>
                 </Cell>

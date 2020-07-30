@@ -199,7 +199,7 @@ class CampaignNew extends Component {
 
                         <Grid.Row>
                             <Grid.Column>
-                                <Message error header="Oops!" content={this.state.errorMessage}></Message>
+                                <Message error header="Oops!" content={this.state.errorMessage} />
                                 <Button loading={this.state.loadingFlag} primary>Create</Button>
                             </Grid.Column>
                         </Grid.Row>
