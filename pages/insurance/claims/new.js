@@ -38,21 +38,6 @@ class NewClaim extends Component {
 
         const insurance = Insurance(this.props.address);
 
-        console.log("ARGS: ", 
-            this.state.injuryClaim,
-            this.state.propertyClaim,
-            this.state.vehicleClaim,
-            this.state.incidentType,
-            this.state.collisionType,
-            this.state.incidentSeverity,
-            this.state.authoritiesContacted,
-            this.state.incidentHour,
-            this.state.vehiclesInvolved,
-            this.state.propertyDamage,
-            this.state.bodilyInjuries,
-            this.state.witnesses,
-            this.state.policeReportAvailable);
-
         try {
             const accounts = await web3.eth.getAccounts();
 

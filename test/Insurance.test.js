@@ -92,7 +92,7 @@ describe("Insurance", () => {
         
         await insurance.methods.approveClaim(0).send({
             from: accounts[0],
-            value: totalClaimAmount
+            gas: "4000000"
         })
 
         let newBalance = await web3.eth.getBalance(accounts[0]);

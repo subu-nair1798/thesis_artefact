@@ -22,7 +22,7 @@ class PayPremiumForm extends Component {
             const accounts = await web3.eth.getAccounts();
             await insurance.methods.payPremium().send({
                 from: accounts[0],
-                value: web3.utils.toWei( ((parseFloat(this.props.annualPremium)/1000)/322.28).toString(), "ether")
+                value: web3.utils.toWei( ((parseFloat(this.props.annualPremium)/100)/322.28).toString(), "ether")
             });
 
             Router.replaceRoute(`/insurance/${this.props.address}`);

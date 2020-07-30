@@ -8,7 +8,7 @@ class ClaimRow extends Component {
         const { id, claim, address } = this.props;
         const totalClaim = parseFloat(claim.injury_claim) + parseFloat(claim.property_claim) + parseFloat(claim.vehicle_claim);
         return(
-            <Row negative={claim.complete && !claim.claim_decision} poaitive={claim.complete && claim.claim_decision}>
+            <Row negative={claim.complete && !claim.claim_decision} positive={claim.complete && claim.claim_decision}>
                 <Cell>{id}</Cell>
                 <Cell>{claim.injury_claim}</Cell>
                 <Cell>{claim.property_claim}</Cell>

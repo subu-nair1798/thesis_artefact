@@ -123,9 +123,7 @@ contract Insurance {
 
         require(!claim.complete, "Claim already processed");
 
-        uint total_claim_amount = claim.injury_claim + claim.property_claim + claim.vehicle_claim;
-
-        customer_address.transfer(total_claim_amount);
+        customer_address.transfer(msg.value);
         claim.complete = true;
         claim.claim_decision = true;
     }
