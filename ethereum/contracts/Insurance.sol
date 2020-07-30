@@ -153,4 +153,8 @@ contract Insurance {
             auto_year);
     }
 
+    function getClaimsCount() public view returns(uint) {
+        return claimsArray.length;
+    }
+
 }

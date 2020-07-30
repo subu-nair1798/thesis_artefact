@@ -60,11 +60,11 @@ class InsuranceShow extends Component {
                 description: "Policy CSL"
             },
             {
-                header: policyDeductable + "/" + (parseFloat(policyDeductable)/322.28),
+                header: policyDeductable + " / " + (parseFloat(policyDeductable)/322.28),
                 description: "Policy Deductable (USD / Ether)"
             },
             {
-                header: (parseFloat(annualPremium)/100) + "/" + ((parseFloat(annualPremium)/100)/322.28),
+                header: (parseFloat(annualPremium)/100) + " / " + ((parseFloat(annualPremium)/100)/322.28),
                 description: "Annual Premium (USD / Ether)"
             },
             {

@@ -28,17 +28,6 @@ class CampaignNew extends Component {
         this.setState({ errorMessage: "" });
 
         let tempAnnualPremium = this.state.annualPremium.replace(".", "");
-        console.log("LOG OUTPUT:",
-            this.state.customerAddress, 
-            this.state.monthsAsCustomer, 
-            this.state.age, 
-            this.state.policyCsl, 
-            this.state.policyDeductable,
-            tempAnnualPremium,
-            this.state.umbrellaLimit,
-            this.state.sex,
-            this.state.autoMake,
-            this.state.autoYear);
 
         try {
             const accounts = await web3.eth.getAccounts();
