@@ -17,3 +17,31 @@ row 56: 0x3C7c98e0B3D3089334e43baF20f1668E685FA80f, 195, 39, "250/500", 1000, 13
 
 Claim row 59: 300, 300, 1800, Parked Car, No Collision, Minor Damage, None, 19, 1, NO, 1, 3, NO
 
+    # request_obj = request.args
+    # request_list = []
+    # request_list.append(int(request_obj.get("monthsAsCustomer")))
+    # request_list.append(int(request_obj.get("age")))
+    # request_list.append(le6.transform([pd.Series(request_obj.get("policyCsl"))])[0])
+    # request_list.append(int(request_obj.get("policyDeductable")))
+    # request_list.append(float(request_obj.get("annualPremium")))
+    # request_list.append(int(request_obj.get("umbrellaLimit")))
+    # request_list.append(int(request_obj.get("sex")))
+    # request_list.append(le4.transform([request_obj.get("incidentType")])[0])
+    # request_list.append(le5.transform([request_obj.get("collisionType")])[0])
+    # request_list.append(le3.transform([request_obj.get("incidentSeverity")])[0])
+    # request_list.append(le2.transform([request_obj.get("authoritiesContacted")])[0])
+    # request_list.append(int(request_obj.get("incidentHour")))
+    # request_list.append(int(request_obj.get("vehiclesInvolved")))
+    # request_list.append(int(request_obj.get("propertyDamage")))
+    # request_list.append(int(request_obj.get("bodilyInjuries")))
+    # request_list.append(int(request_obj.get("witnesses")))
+    # request_list.append(int(request_obj.get("policeReportAvailable")))
+    # request_list.append(int(request_obj.get("totalClaimAmount")))
+    # request_list.append(int(request_obj.get("injuryClaim")))
+    # request_list.append(int(request_obj.get("propertyClaim")))
+    # request_list.append(int(request_obj.get("vehicleClaim")))
+    # request_list.append(le1.transform([request_obj.get("autoMake")])[0])
+    # request_list.append(int(request_obj.get("autoYear")))
+
+    return_string = "".join(str(i) for i in request_list)
+    print(return_string)

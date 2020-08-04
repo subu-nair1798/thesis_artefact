@@ -21,9 +21,19 @@ class ClaimAnalysis extends Component {
 
         const claimsArray = await insurance.methods.claimsArray(id).call();
         const claimDetailsArray = await insurance.methods.claimDetailsArray(id).call();
-
+        const summary = await insurance.methods.getSummary().call();
         
         return {
+            monthsAsCustomer: summary[1],
+            age: summary[2],
+            policyCsl: summary[3],
+            policyDeductable: summary[4],
+            annualPremium: summary[5],
+            umbrellaLimit: summary[6],
+            sex: summary[7],
+            autoMake: summary[8],
+            autoYear: summary[9],
+
             injuryClaim: claimsArray[0],
             propertyClaim: claimsArray[1],
             vehicleClaim: claimsArray[2],
@@ -46,13 +56,61 @@ class ClaimAnalysis extends Component {
     }
 
     componentDidMount() {
+        let totalClaimAmount = parseFloat(this.props.injuryClaim) + parseFloat(this.props.propertyClaim) + parseFloat(this.props.vehicleClaim);
+        let tempPropertyDamage;
+        let tempPoliceReport;
+        let tempSex;
+
+        if(this.props.sex == "MALE") {
+            tempSex = 1
+        } else if(this.props.sex == "FEMALE"){
+            tempSex = 0
+        }
+
+        if(this.props.propertyDamage) {
+            tempPropertyDamage = 1
+        } else {
+            tempPropertyDamage = 0
+        }
+
+        if(this.props.policeReportAvailable) {
+            tempPoliceReport = 1
+        } else {
+            tempPoliceReport = 0
+        }
+
         axios.get("http://localhost:5000/", {
             params: {
-                getData: this.props.incidentSeverity
+                "monthsAsCustomer": this.props.monthsAsCustomer,
+                "age": this.props.age,
+                "policyCsl": this.props.policyCsl,
+                "policyDeductable": this.props.policyDeductable,
+                "annualPremium": (parseFloat(this.props.annualPremium)/100),
+                "umbrellaLimit": this.props.umbrellaLimit,
+                "sex": tempSex,
+                "autoMake": this.props.autoMake,
+                "autoYear": this.props.autoYear,
+
+                "injuryClaim": this.props.injuryClaim,
+                "propertyClaim": this.props.propertyClaim,
+                "vehicleClaim": this.props.vehicleClaim,
+                "totalClaimAmount": totalClaimAmount,
+
+                "incidentType": this.props.incidentType,
+                "collisionType": this.props.collisionType,
+                "incidentSeverity": this.props.incidentSeverity,
+                "authoritiesContacted": this.props.authoritiesContacted,
+                "incidentHour": this.props.incidentHour,
+                "vehiclesInvolved": this.props.vehiclesInvolved,
+                "propertyDamage": tempPropertyDamage,
+                "bodilyInjuries": this.props.bodilyInjuries,
+                "witnesses": this.props.witnesses,
+                "policeReportAvailable": tempPoliceReport
             }
         })
         .then(res => {
         console.log(res.data);
+        this.setState({ likelihood: res.data })
       })
     }
 
@@ -219,7 +277,10 @@ class ClaimAnalysis extends Component {
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
-                        <Grid.Column>{this.state.likelihood}</Grid.Column>
+                        <Grid.Column><hr/></Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column><h3>Likelihood of Claim {this.props.id} being fraudulent: {this.state.likelihood}%</h3></Grid.Column>
                     </Grid.Row>
                 </Grid>
             </Layout>
