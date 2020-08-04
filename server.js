@@ -1,4 +1,4 @@
-const { createServer } = require("http");
+const express = require("express")();
 const next = require("next");
 
 const app = next({
@@ -9,8 +9,13 @@ const routes = require("./routes");
 const handler = routes.getRequestHandler(app);
 
 app.prepare().then(() => {
-    createServer(handler).listen(3000, (err) => {
+    const server = express.use(handler);
+
+    server.listen(3000, (err) => {
         if(err) throw err;
         console.log("Server ready on localhost:3000");
     });
 });
+
+
+

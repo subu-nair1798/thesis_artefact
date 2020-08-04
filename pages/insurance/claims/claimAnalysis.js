@@ -4,9 +4,12 @@ import { Router, Link } from "../../../routes";
 import Insurance from "../../../ethereum/insurance";
 import web3 from "../../../ethereum/web3";
 import Layout from "../../../components/Layout";
+import axios from "axios";
+// import runPyFile from "../../../helper";
 
 class ClaimAnalysis extends Component {
     state = {
+        likelihood: "",
         loadingFlag1: false,
         loadingFlag2: false
     }
@@ -40,6 +43,17 @@ class ClaimAnalysis extends Component {
 
             address: address, 
             id: id };
+    }
+
+    componentDidMount() {
+        axios.get("http://localhost:5000/", {
+            params: {
+                getData: this.props.incidentSeverity
+            }
+        })
+        .then(res => {
+        console.log(res.data);
+      })
     }
 
     renderClaimDetailCards() {
@@ -203,6 +217,9 @@ class ClaimAnalysis extends Component {
                                 <h4>{claimState}</h4>
                             )}
                         </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column>{this.state.likelihood}</Grid.Column>
                     </Grid.Row>
                 </Grid>
             </Layout>
