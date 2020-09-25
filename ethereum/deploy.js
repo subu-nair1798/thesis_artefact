@@ -5,8 +5,8 @@ const abiFactory = compiledFactory["abi"];
 const bytecodeFactory = compiledFactory["evm"]["bytecode"]["object"];
 
 const provider = new HDWalletProvider(
-    "slight post clutch clinic avoid parrot leader release force swing wide join",
-    "https://rinkeby.infura.io/v3/d1d22a6bf235434cbd9cef0031eae3bd"
+    // mnemonic,
+    // infura node link
 )
 
 const web3 = new Web3(provider);
