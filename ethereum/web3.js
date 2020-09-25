@@ -37,7 +37,7 @@ if (
 } else {
   // We are on the server OR MetaMask is not running.
   const provider = new Web3.providers.HttpProvider(
-    "https://rinkeby.infura.io/v3/d1d22a6bf235434cbd9cef0031eae3bd"
+    // infura node link
   );
 
   web3 = new Web3(provider);
