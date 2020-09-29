@@ -3,10 +3,6 @@
 Dataset : insurance_claims.csv ([Link to the Dataset](https://www.kaggle.com/buntyshah/insurance-fraud-claims-detection
 ))
 
-The artefact is divided into two different components:
-- application : Contains code for the Ethereum-Flask application
-- python_code : Contains code for implementing Machine Learning models
-
 ## Ethereum-Flask app (application)
 
 ### Requirements
@@ -52,17 +48,5 @@ The artefact is divided into two different components:
 ```bash
     npm run dev
 ```
-
-## Python Code (python_code)
-
-- Contains 3 Jupyter notebooks (.ipynb) along with their compiled HTML files.
-
-- Please refer the ```import``` statements in each file for package dependencies.
-
-    * machine_learning_models : Contains code for Data pre-processing, Exploratory Data Analysis, Under-sampling Modelling and Evaluation of Random Forest, Logistic Regression, Decision Tree and SVM
-
-    * h2o_deep_learning : Contains code for implementing H2O.ai Deep Learning. Please note that the pre-processed under-sampled dataset was exported to h2o_undersampled.csv
-
-    * shap_values : Contains code for interpreting and evaluating the Random Forest Classifier
 
 ### NOTE: Please contact the author before deploying this code (Email: subunair17@gmail.com)
