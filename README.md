@@ -7,7 +7,7 @@ Dataset : insurance_claims.csv ([Link to the Dataset](https://www.kaggle.com/bun
 
 ### Requirements
 - You need a node package manager : ```npm``` or ```yarn``` (This research was conducted using ```npm```)
-- Metamask need to be configured in the browser
+- Metamask needs to be configured in the browser (Only available in Chrome)
 - Stable & Compatible node version : This research was conducted on ```node v10.20.1```
 - Python : This search was conducted on ```python 3.7.4```
 
