@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/subu-nair1798/thesis_artefact#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "child_process": "^1.0.2",
     "fs-extra": "^9.0.1",
     "ganache-cli": "^6.9.1",
